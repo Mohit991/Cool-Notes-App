@@ -4,7 +4,7 @@ import { User } from "../models/user"
 
 async function fetchData(input: RequestInfo, init?: RequestInit){
     // const url = "http://localhost:5000" + input  
-    const url = "cool-notes-app-backend.vercel.app" + input
+    const url = "https://cool-notes-app-backend.vercel.app" + input
     const response = await fetch(url, init)
     if(response.ok){
         return response
