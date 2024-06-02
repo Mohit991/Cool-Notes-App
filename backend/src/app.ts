@@ -10,14 +10,14 @@ import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 const cors = require('cors')
 const app = express();
+app.use(cors())
 
 
-
-app.use(cors({
-    origin: 'https://cool-notes-app-frontend.vercel.app'   
-    // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    // credentials: true
-  }));
+// app.use(cors({
+//     origin: 'https://cool-notes-app-frontend.vercel.app'   
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true
+//   }));
   
 app.use(morgan("dev"))
 app.use(express.json())
