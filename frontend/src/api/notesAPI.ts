@@ -27,7 +27,8 @@ async function fetchData(input: RequestInfo, init?: RequestInit){
 export async function getLoggedInUser(): Promise<User>{
     const response = await fetchData("/api/user", {
         method: "GET",
-        credentials: 'include'
+        credentials: 'include',
+        mode: 'cors'
     })
     return response.json()
 }
@@ -60,6 +61,7 @@ export async function logIn(credentials: LoginInCredentials): Promise<User> {
             "Content-Type": "application/json"
         },
         credentials: 'include',
+        mode: 'cors',
         body: JSON.stringify(credentials)
     })
     return response.json()
