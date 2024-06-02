@@ -45,6 +45,7 @@ export async function signUp(credentials :SignUpCredentials): Promise<User>{
             "Content-Type": "application/json"
         },
         credentials: 'include',
+        mode: 'cors',
         body: JSON.stringify(credentials)
     })
     return response.json()
@@ -70,7 +71,8 @@ export async function logIn(credentials: LoginInCredentials): Promise<User> {
 export async function logOut(){
     await fetchData('/api/user/logout', {
         method: "POST",
-        credentials: 'include'
+        credentials: 'include',
+        mode: 'cors'
     })
 }
 
@@ -91,6 +93,7 @@ export async function createNote(note: NoteInput): Promise<Note>{
             "Content-Type" : "application/json"
         }, 
         credentials: 'include',
+        mode: 'cors',
         body: JSON.stringify(note)
     })
     return response.json()
@@ -103,6 +106,7 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
             "Content-Type" : "application/json"
         },
         credentials: 'include',
+        mode: 'cors',
         body: JSON.stringify(note)
     })
     return response.json()
@@ -111,6 +115,7 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
 export async function deleteNote(noteId: string){
     await fetchData(`/api/notes/${noteId}`, {
         method: "DELETE",
-        credentials: 'include'
+        credentials: 'include',
+        mode: 'cors'
     })
 }
