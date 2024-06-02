@@ -3,7 +3,8 @@ import { Note } from "../models/note"
 import { User } from "../models/user"
 
 async function fetchData(input: RequestInfo, init?: RequestInit){
-    const response = await fetch(input, init)
+    const url = "http://localhost:5000" + input    
+    const response = await fetch(url, init)
     if(response.ok){
         return response
     }
@@ -24,7 +25,8 @@ async function fetchData(input: RequestInfo, init?: RequestInit){
 
 export async function getLoggedInUser(): Promise<User>{
     const response = await fetchData("/api/user", {
-        method: "GET"
+        method: "GET",
+        credentials: 'include'
     })
     return response.json()
 }
@@ -40,6 +42,7 @@ export async function signUp(credentials :SignUpCredentials): Promise<User>{
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: 'include',
         body: JSON.stringify(credentials)
     })
     return response.json()
@@ -55,6 +58,7 @@ export async function logIn(credentials: LoginInCredentials): Promise<User> {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: 'include',
         body: JSON.stringify(credentials)
     })
     return response.json()
@@ -62,12 +66,13 @@ export async function logIn(credentials: LoginInCredentials): Promise<User> {
 
 export async function logOut(){
     await fetchData('/api/user/logout', {
-        method: "POST"
+        method: "POST",
+        credentials: 'include'
     })
 }
 
 export async function fetchNotes(): Promise<Note[]>{
-    const response = await fetchData("/api/notes", {method: "GET"})
+    const response = await fetchData("/api/notes", {method: "GET", credentials: 'include'})
     return await response.json()    
 }
 
@@ -82,6 +87,7 @@ export async function createNote(note: NoteInput): Promise<Note>{
         headers: {
             "Content-Type" : "application/json"
         }, 
+        credentials: 'include',
         body: JSON.stringify(note)
     })
     return response.json()
@@ -93,6 +99,7 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
         headers: {
             "Content-Type" : "application/json"
         },
+        credentials: 'include',
         body: JSON.stringify(note)
     })
     return response.json()
@@ -100,6 +107,7 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
 
 export async function deleteNote(noteId: string){
     await fetchData(`/api/notes/${noteId}`, {
-        method: "DELETE"
+        method: "DELETE",
+        credentials: 'include'
     })
 }
