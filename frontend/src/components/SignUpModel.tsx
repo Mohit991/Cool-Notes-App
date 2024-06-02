@@ -15,11 +15,12 @@ const SignUpModel = ({onDismiss, onSignUpSuccessful}: SignUpModelProps) => {
     async function onSubmit(credentials:SignUpCredentials) {
         try {
             const newUser = await NotesAPI.signUp(credentials)
+            onSignUpSuccessful(newUser)
         } catch (error) {
             alert(error)
             console.log(error);
-            
         }
+
     }
     return ( 
         <Modal show onHide={onDismiss}>
