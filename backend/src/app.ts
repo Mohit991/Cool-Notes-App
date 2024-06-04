@@ -16,8 +16,8 @@ const app = express();
 
 
 app.use(cors({
-    //origin: 'https://cool-notes-app-sigma.vercel.app',
-    origin: 'http://localhost:3000',
+    origin: 'https://cool-notes-app-sigma.vercel.app',
+    // origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true
 }));
