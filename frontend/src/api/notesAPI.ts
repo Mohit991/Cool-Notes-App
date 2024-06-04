@@ -27,7 +27,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit){
 export async function getLoggedInUser(): Promise<User>{
     const response = await fetchData("/api/user", {
         method: "GET",
-        credentials: "same-origin",   
+        credentials: 'include',   
     })
     return response.json()
 }
@@ -59,7 +59,7 @@ export async function logIn(credentials: LoginInCredentials): Promise<User> {
         headers: {
             "Content-Type": "application/json"
         },
-        credentials: "same-origin",
+        credentials: 'include',
         body: JSON.stringify(credentials)
     })
     return response.json()
@@ -73,7 +73,7 @@ export async function logOut(){
 }
 
 export async function fetchNotes(): Promise<Note[]>{
-    const response = await fetchData("/api/notes", {method: "GET", credentials: "same-origin"})
+    const response = await fetchData("/api/notes", {method: "GET", credentials: 'include',})
     return await response.json()    
 }
 
