@@ -73,7 +73,7 @@ export async function logOut(){
 }
 
 export async function fetchNotes(): Promise<Note[]>{
-    const response = await fetchData("/api/notes", {method: "GET", credentials: 'include'})
+    const response = await fetchData("/api/notes", {method: "GET"})
     return await response.json()    
 }
 
