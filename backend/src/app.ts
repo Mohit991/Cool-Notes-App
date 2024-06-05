@@ -16,9 +16,6 @@ app.use(cors({
     credentials: true
 }));
 
-app.use(morgan("dev"));
-app.use(express.json());
-
 app.use(session({
     secret: env.SESSION_SECRET,
     resave: false,
@@ -34,6 +31,11 @@ app.use(session({
         mongoUrl: env.MONGODB_CONNECTION_STRING
     })
 }));
+
+app.use(morgan("dev"));
+app.use(express.json());
+
+
 
 app.use("/api/user", userRoutes);
 app.use("/api/notes", requiresAuth, notesRoutes);
