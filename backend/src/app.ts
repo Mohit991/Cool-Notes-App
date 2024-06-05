@@ -13,7 +13,8 @@ const app = express();
 
 app.use(cors({
     origin: 'https://cool-notes-app-sigma.vercel.app',
-    credentials: true
+    credentials: true,
+    exposedHeaders: ['Set-Cookie'],
 }));
 
 
@@ -23,8 +24,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: false, // Ensure secure is set to true for HTTPS
-        // sameSite: false, // Required for cross-origin cookies
-        // httpOnly: true,
+        sameSite: false, // Required for cross-origin cookies
+        httpOnly: true,
         maxAge: 60 * 60 * 1000 // 1 hour         
     },
     rolling: true,
