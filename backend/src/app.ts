@@ -16,15 +16,16 @@ app.use(cors({
     credentials: true
 }));
 
+
 app.use(session({
     secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 60 * 60 * 1000, // 1 hour
+        secure: true, // Ensure secure is set to true for HTTPS
         httpOnly: true,
-        // secure: true, // Ensure secure is set to true for HTTPS
-        // sameSite: 'none' // Required for cross-origin cookies
+        sameSite: "none", // Required for cross-origin cookies
+        maxAge: 60 * 60 * 1000 // 1 hour         
     },
     rolling: true,
     store: MongoStore.create({
