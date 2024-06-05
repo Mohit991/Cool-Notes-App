@@ -28,7 +28,7 @@ app.use(session({
         maxAge: 60 * 60 * 1000, // 1 hour
         httpOnly: true,
         secure: true, // true in production, false otherwise
-        // sameSite: 'none' // None in production, Lax otherwise
+        sameSite: 'none' // None in production, Lax otherwise
     },
     rolling: true,
     store: MongoStore.create({
