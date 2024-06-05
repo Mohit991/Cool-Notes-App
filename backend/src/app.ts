@@ -24,7 +24,7 @@ app.use(session({
         maxAge: 60 * 60 * 1000, // 1 hour
         httpOnly: true,
         secure: true, // Ensure secure is set to true for HTTPS
-        sameSite: 'none' // Required for cross-origin cookies
+        // sameSite: 'none' // Required for cross-origin cookies
     },
     rolling: true,
     store: MongoStore.create({
