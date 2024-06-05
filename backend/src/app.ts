@@ -13,7 +13,6 @@ const app = express();
 
 app.use(cors({
     origin: 'https://cool-notes-app-sigma.vercel.app',
-    // origin: 'http://localhost:3000',
     credentials: true
 }));
 
@@ -27,8 +26,8 @@ app.use(session({
     cookie: {
         maxAge: 60 * 60 * 1000, // 1 hour
         httpOnly: true,
-        // secure: true, // true in production, false otherwise
-        // sameSite: 'none' // None in production, Lax otherwise
+        secure: true, // Ensure secure is set to true for HTTPS
+        sameSite: 'none' // Required for cross-origin cookies
     },
     rolling: true,
     store: MongoStore.create({
