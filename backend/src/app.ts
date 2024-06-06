@@ -28,7 +28,7 @@ app.use(session({
         httpOnly: true,
         maxAge: 60 * 60 * 1000 // 1 hour         
     },
-    rolling: true,
+    rolling: false,
     store: MongoStore.create({
         mongoUrl: env.MONGODB_CONNECTION_STRING
     })
