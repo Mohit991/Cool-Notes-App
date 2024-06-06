@@ -21,6 +21,7 @@ app.use(session({
     secret: env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     cookie: {
         secure: true, // Ensure secure is set to true for HTTPS
         sameSite: 'none', // Required for cross-origin cookies
