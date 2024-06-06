@@ -14,7 +14,6 @@ const app = express();
 app.use(cors({
     origin: 'https://cool-notes-app-sigma.vercel.app',
     credentials: true,
-    exposedHeaders: ['Set-Cookie'],
 }));
 
 
