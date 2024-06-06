@@ -25,10 +25,10 @@ app.use(session({
     cookie: {
         secure: true, // Ensure secure is set to true for HTTPS
         sameSite: 'none', // Required for cross-origin cookies
-        httpOnly: false,
+        httpOnly: true,
         maxAge: 60 * 60 * 1000 // 1 hour         
     },
-    rolling: false,
+    rolling: true,
     store: MongoStore.create({
         mongoUrl: env.MONGODB_CONNECTION_STRING
     })
