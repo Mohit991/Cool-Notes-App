@@ -24,7 +24,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: true, // Ensure secure is set to true for HTTPS
-        sameSite: false, // Required for cross-origin cookies
+        sameSite: 'none', // Required for cross-origin cookies
         httpOnly: true,
         maxAge: 60 * 60 * 1000 // 1 hour         
     },
